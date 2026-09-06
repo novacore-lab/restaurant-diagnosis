@@ -539,6 +539,12 @@ select:focus,input:focus{border-color:var(--g-1);box-shadow:0 0 0 3px rgba(212,1
 }
 .btn.is-off::before{display:none;}
 .btn.is-off::after{border-color:rgba(246,243,234,.20);}
+/* uid あり導線で、LINE へお届け済みのとき。押せないが「完了」に見える状態 */
+.btn.is-done{
+  background:rgba(246,243,234,.10);color:var(--g-0);
+  box-shadow:none;cursor:default;pointer-events:none;
+}
+.btn.is-done::before{display:none;}
 .gate .btn-note{color:rgba(246,243,234,.66);}
 
 .retry{
@@ -772,9 +778,9 @@ select:focus,input:focus{border-color:var(--g-1);box-shadow:0 0 0 3px rgba(212,1
         <div class="howto" id="howto">
           <p class="howto-title">受け取り方</p>
           <ol>
-            <li><i>一</i><span>下のボタンを押すと、LINEが開きます</span></li>
-            <li><i>二</i><span>トークに<b id="howto-keyword">タイプ名</b>と文字が入った状態になります</span></li>
-            <li><i>三</i><span>そのまま<b>送信</b>してください</span></li>
+            <li><i>一</i><span id="howto-step1">下のボタンを押すと、LINEが開きます</span></li>
+            <li id="howto-step2"><i>二</i><span>トークに<b id="howto-keyword">タイプ名</b>と文字が入った状態になります</span></li>
+            <li id="howto-step3"><i>三</i><span>そのまま<b>送信</b>してください</span></li>
           </ol>
         </div>
 
@@ -1160,30 +1166,74 @@ function getSid(){
   }catch(e){ return 'nosid'; }
 }
 function pad2(v){ return String(v).padStart(2,'0'); }
+
+/* ── ProLINE の uid ────────────────────────────────
+   LINE の案内メッセージから「…/?uid=[[uid]]」の形で開くと、
+   URL に ProLINE の uid が付いてきます。
+   uid があれば、結果ボタンを押したときに GAS 経由で
+   ProLINE のフォームへ回答を送り、LINE のトークに鑑定結果を
+   自動でお届けします（利用者が文字を送信する必要がない）。
+   uid が無いときは、今までどおりキーワード送信の導線になります。
+   ──────────────────────────────────────────────── */
+function getUid(){
+  try{
+    let u = new URLSearchParams(location.search).get('uid') || '';
+    u = String(u).trim();
+    if(u){ sessionStorage.setItem('ryujin_uid', u); }
+    else { u = sessionStorage.getItem('ryujin_uid') || ''; }
+    return /^[A-Za-z0-9]{4,16}$/.test(u) ? u : '';
+  }catch(e){ return ''; }
+}
+function buildPayload(event, r){
+  const t = (r && r.type) || {};
+  const prefEl = $('in-pref');
+  const prefName = (prefEl && prefEl.selectedIndex >= 0 && prefEl.options[prefEl.selectedIndex])
+    ? prefEl.options[prefEl.selectedIndex].text : '';
+  return {
+    secret: CONFIG.GAS_SECRET || '',
+    event:  event,
+    sid:    getSid(),
+    uid:    getUid(),
+    at:     new Date().toISOString(),
+    type:   t.key  || '',
+    name:   t.name || '',
+    elem:   (r && r.elem) || '',
+    day:    (r && r.day) ? (r.day.kan + r.day.shi) : '',
+    birth:  $('in-year').value + '-' + pad2($('in-month').value) + '-' + pad2($('in-day').value),
+    time:   timeKnown ? (pad2($('in-hour').value) + ':' + pad2($('in-minute').value)) : '',
+    known:  !!timeKnown,
+    pref:   prefName,
+    ref:    document.referrer || '',
+    url:    location.href,
+    ua:     navigator.userAgent
+  };
+}
+/* uid 付きで GAS に line_click を送り、応答（delivered）を読む。
+   8秒で応答が無ければ失敗扱い。失敗しても例外は投げず false を返す */
+function deliverViaGas(r){
+  return new Promise(function(resolve){
+    let done = false;
+    const finish = function(v){ if(!done){ done = true; resolve(v); } };
+    try{
+      if(!CONFIG.GAS_URL) return finish(false);
+      const ctrl = ('AbortController' in window) ? new AbortController() : null;
+      const timer = setTimeout(function(){ if(ctrl) ctrl.abort(); finish(false); }, 8000);
+      fetch(CONFIG.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {'Content-Type': 'text/plain;charset=UTF-8'},
+        body: JSON.stringify(buildPayload('line_click', r)),
+        signal: ctrl ? ctrl.signal : undefined
+      }).then(function(res){ return res.json(); })
+        .then(function(j){ clearTimeout(timer); finish(!!(j && j.ok && j.delivered)); })
+        .catch(function(){ clearTimeout(timer); finish(false); });
+    }catch(e){ finish(false); }
+  });
+}
 function logEvent(event, r){
   try{
     if(!CONFIG.GAS_URL) return;
-    const t = (r && r.type) || {};
-    const prefEl = $('in-pref');
-    const prefName = (prefEl && prefEl.selectedIndex >= 0 && prefEl.options[prefEl.selectedIndex])
-      ? prefEl.options[prefEl.selectedIndex].text : '';
-    const payload = {
-      secret: CONFIG.GAS_SECRET || '',
-      event:  event,
-      sid:    getSid(),
-      at:     new Date().toISOString(),
-      type:   t.key  || '',
-      name:   t.name || '',
-      elem:   (r && r.elem) || '',
-      day:    (r && r.day) ? (r.day.kan + r.day.shi) : '',
-      birth:  $('in-year').value + '-' + pad2($('in-month').value) + '-' + pad2($('in-day').value),
-      time:   timeKnown ? (pad2($('in-hour').value) + ':' + pad2($('in-minute').value)) : '',
-      known:  !!timeKnown,
-      pref:   prefName,
-      ref:    document.referrer || '',
-      url:    location.href,
-      ua:     navigator.userAgent
-    };
+    const payload = buildPayload(event, r);
     fetch(CONFIG.GAS_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -1291,14 +1341,13 @@ function render(r){
     btn.classList.add('is-off');
     btn.textContent = 'ただいま準備中です';
     btn.onclick = null;
+  }else if(getUid() && CONFIG.GAS_URL){
+    // ── uid あり（LINE の案内から開いた方）──
+    // ボタンを押すと GAS → ProLINE フォームに回答が送られ、
+    // LINE のトークに鑑定結果が自動で届く。文字の送信は不要。
+    setupUidGate(btn, r, keyword);
   }else{
-    $('howto').hidden = false; $('qr-block').hidden = false; $('manual').hidden = false;
-    btn.href = 'https://line.me/R/oaMessage/'+encodeURIComponent(CONFIG.LINE_ID)+'/?'+encodeURIComponent(keyword);
-    btn.setAttribute('aria-disabled','false');
-    btn.classList.remove('is-off');
-    btn.textContent = 'LINEで結果を受け取る';
-    // LINE ボタン押下を記録（target=_blank なので画面は残り、送信は完了する）
-    btn.onclick = function(){ logEvent('line_click', r); };
+    setupKeywordGate(btn, r, keyword);
   }
 
   // 結果を保持（同じ端末で開き直したときのため）
@@ -1311,6 +1360,76 @@ function render(r){
 
   // 診断完了を記録（GAS_URL 未設定なら何もしない）
   logEvent('result', r);
+}
+
+/* ── LINE 導線（キーワード送信）─────────────────────
+   従来どおり。ボタンを押すと LINE が開き、トークにタイプ名が
+   入った状態になるので、そのまま送信してもらう。 */
+function setupKeywordGate(btn, r, keyword){
+  $('howto').hidden = false; $('qr-block').hidden = false; $('manual').hidden = false;
+  $('gate-actions').classList.toggle('is-desktop', !IS_MOBILE);
+  $('howto-keyword').textContent = '「' + keyword + '」';
+  $('howto-step1').textContent = '下のボタンを押すと、LINEが開きます';
+  $('howto-step2').hidden = false;
+  $('howto-step3').hidden = false;
+  btn.href = 'https://line.me/R/oaMessage/'+encodeURIComponent(CONFIG.LINE_ID)+'/?'+encodeURIComponent(keyword);
+  btn.target = '_blank';
+  btn.setAttribute('aria-disabled','false');
+  btn.classList.remove('is-off');
+  btn.textContent = 'LINEで結果を受け取る';
+  $('btn-note').textContent = IS_MOBILE
+    ? '無料 ／ いつでも解除できます'
+    : 'LINEアプリをお使いのパソコンでは、こちらからも開けます';
+  // LINE ボタン押下を記録（target=_blank なので画面は残り、送信は完了する）
+  btn.onclick = function(){ logEvent('line_click', r); };
+}
+
+/* ── LINE 導線（uid あり：自動お届け）────────────────
+   LINE の案内メッセージ（URL に ?uid=[[uid]]）から開いた方向け。
+   ボタンを押す → GAS → ProLINE フォーム回答 → 完了メッセージが
+   LINE のトークに届く。利用者は何も送信しなくてよい。
+   届けられなかったときは、従来のキーワード送信に自動で切り替える。 */
+function setupUidGate(btn, r, keyword){
+  const note = $('btn-note');
+  $('howto').hidden = false;
+  $('qr-block').hidden = true;      // LINE から来た方なので QR は不要
+  $('manual').hidden = false;       // 念のため手入力の道は残す
+  $('gate-actions').classList.remove('is-desktop');
+  $('howto-step1').textContent = '下のボタンを押すと、LINEのトークに鑑定結果が届きます';
+  $('howto-step2').hidden = true;
+  $('howto-step3').hidden = true;
+
+  btn.removeAttribute('href');
+  btn.removeAttribute('target');
+  btn.setAttribute('role','button');
+  btn.setAttribute('aria-disabled','false');
+  btn.classList.remove('is-off');
+  btn.textContent = 'LINEで結果を受け取る';
+  note.textContent = '無料 ／ いつでも解除できます';
+
+  let busy = false, done = false;
+  btn.onclick = function(ev){
+    if(ev) ev.preventDefault();
+    if(busy || done) return;
+    busy = true;
+    btn.textContent = 'お届けしています…';
+    btn.setAttribute('aria-disabled','true');
+    deliverViaGas(r).then(function(ok){
+      busy = false;
+      if(ok){
+        done = true;
+        btn.textContent = 'LINEにお届けしました';
+        btn.setAttribute('aria-disabled','true');
+        btn.classList.add('is-done');
+        note.textContent = 'LINEを開いて、トークをご確認ください';
+        $('howto-step1').textContent = 'LINEのトークに鑑定結果をお届けしました。この画面を閉じてご確認ください';
+      }else{
+        // 届けられなかった → 従来のキーワード送信に切り替える
+        setupKeywordGate(btn, r, keyword);
+        note.textContent = 'もう一度ボタンを押して、LINEで「' + keyword + '」を送信してください';
+      }
+    });
+  };
 }
 </script>
 </body>

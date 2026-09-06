@@ -860,7 +860,15 @@ const CONFIG = {
   // 将来 nbs.jp API に繋ぐ場合のみ true にする
   // ※ APIキーは絶対にここへ書かない。必ずサーバー（プロキシ）経由にすること
   USE_API: false,
-  API_PROXY_URL: ''   // 例: 'https://your-worker.workers.dev/calculate'
+  API_PROXY_URL: '',  // 例: 'https://your-worker.workers.dev/calculate'
+
+  // ── 診断ログ（Google Apps Script）──────────────────
+  // GAS をウェブアプリとしてデプロイすると発行される URL を貼る
+  //   例: 'https://script.google.com/macros/s/AKfycb.../exec'
+  // 空のままなら何も送信しない（サイトは今までどおり動く）
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbxyp9gly0kcdkFOMKrpxhhkGg8n7nYO6oaTbnAwNPIyj04kdsQkPDVSaGvajZrYYyg/exec',
+  // GAS 側 CONFIG.SECRET と同じ文字列。空なら認証なし
+  GAS_SECRET: ''
 };
 
 /* ── 干支の基礎データ ───────────────────────────── */
@@ -1133,6 +1141,59 @@ $('go-ritual').addEventListener('click',function(){
   },4600);
 });
 
+/* ── 診断ログ送信（Google Apps Script）─────────────
+   診断完了（result）と LINE ボタン押下（line_click）を GAS に送ります。
+   ・CONFIG.GAS_URL が空なら何もしない
+   ・失敗しても画面には一切影響しない（例外はすべて握りつぶす）
+   ・Content-Type を text/plain にして CORS のプリフライトを起こさない
+   ・mode:'no-cors' なので応答は読まない（読む必要がない）
+   ・keepalive:true なので、画面遷移中でも送信が完了する
+   ──────────────────────────────────────────────── */
+function getSid(){
+  try{
+    let s = sessionStorage.getItem('ryujin_sid');
+    if(!s){
+      s = Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+      sessionStorage.setItem('ryujin_sid', s);
+    }
+    return s;
+  }catch(e){ return 'nosid'; }
+}
+function pad2(v){ return String(v).padStart(2,'0'); }
+function logEvent(event, r){
+  try{
+    if(!CONFIG.GAS_URL) return;
+    const t = (r && r.type) || {};
+    const prefEl = $('in-pref');
+    const prefName = (prefEl && prefEl.selectedIndex >= 0 && prefEl.options[prefEl.selectedIndex])
+      ? prefEl.options[prefEl.selectedIndex].text : '';
+    const payload = {
+      secret: CONFIG.GAS_SECRET || '',
+      event:  event,
+      sid:    getSid(),
+      at:     new Date().toISOString(),
+      type:   t.key  || '',
+      name:   t.name || '',
+      elem:   (r && r.elem) || '',
+      day:    (r && r.day) ? (r.day.kan + r.day.shi) : '',
+      birth:  $('in-year').value + '-' + pad2($('in-month').value) + '-' + pad2($('in-day').value),
+      time:   timeKnown ? (pad2($('in-hour').value) + ':' + pad2($('in-minute').value)) : '',
+      known:  !!timeKnown,
+      pref:   prefName,
+      ref:    document.referrer || '',
+      url:    location.href,
+      ua:     navigator.userAgent
+    };
+    fetch(CONFIG.GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true,
+      headers: {'Content-Type': 'text/plain;charset=UTF-8'},
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+  }catch(e){}
+}
+
 /* ── 鑑定 ── */
 function divine(y,m,d,hh,mi,lng,known){
   const ts   = toTrueSolar(y,m,d,hh,mi,lng);
@@ -1229,12 +1290,15 @@ function render(r){
     btn.setAttribute('aria-disabled','true');
     btn.classList.add('is-off');
     btn.textContent = 'ただいま準備中です';
+    btn.onclick = null;
   }else{
     $('howto').hidden = false; $('qr-block').hidden = false; $('manual').hidden = false;
     btn.href = 'https://line.me/R/oaMessage/'+encodeURIComponent(CONFIG.LINE_ID)+'/?'+encodeURIComponent(keyword);
     btn.setAttribute('aria-disabled','false');
     btn.classList.remove('is-off');
     btn.textContent = 'LINEで結果を受け取る';
+    // LINE ボタン押下を記録（target=_blank なので画面は残り、送信は完了する）
+    btn.onclick = function(){ logEvent('line_click', r); };
   }
 
   // 結果を保持（同じ端末で開き直したときのため）
@@ -1244,6 +1308,9 @@ function render(r){
       day:r.day.kan+r.day.shi, at:new Date().toISOString()
     }));
   }catch(e){}
+
+  // 診断完了を記録（GAS_URL 未設定なら何もしない）
+  logEvent('result', r);
 }
 </script>
 </body>

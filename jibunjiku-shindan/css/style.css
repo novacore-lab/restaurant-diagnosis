@@ -775,6 +775,38 @@ p, li, h1, h2, h3 {
   letter-spacing: 0.04em;
 }
 
+/* ---------- 公式LINEに戻るボタン ---------- */
+.btn-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 58px;
+  padding: 14px 20px;
+  margin: 4px 0 8px;
+  background: #06C755;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(6,199,85,0.32);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.btn-line:hover { background: #05b04b; }
+.btn-line:active { transform: scale(0.98); }
+.btn-line:focus-visible { outline: 3px solid rgba(6,199,85,0.45); outline-offset: 3px; }
+.line-icon { width: 26px; height: 26px; flex: 0 0 auto; }
+.btn-line-note {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--color-text-light);
+  margin-bottom: 22px;
+  letter-spacing: 0.04em;
+}
+
 /* ---------- 再診断ボタン ---------- */
 .btn-retry {
   display: block;

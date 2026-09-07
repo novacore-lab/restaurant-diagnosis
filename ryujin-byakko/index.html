@@ -443,10 +443,13 @@ select:focus,input:focus{border-color:var(--g-1);box-shadow:0 0 0 3px rgba(212,1
 }
 .howto ol li span{flex:1 1 auto;}
 .howto ol li b{color:var(--g-0);font-weight:600;}
+/* hidden 属性を display:flex より優先させる（uid あり導線で手順を隠すため） */
+.howto ol li[hidden]{display:none;}
 .howto-note{
   margin-top:12px;padding-top:12px;border-top:1px solid rgba(212,184,99,.20);
   text-align:center;font-size:.84rem;line-height:1.9;color:rgba(246,243,234,.78);
 }
+.howto-note small{display:inline-block;margin-top:4px;font-size:.74rem;color:rgba(246,243,234,.62);}
 
 /* パソコン向けのQR。読み取り精度を保つため地は白のまま */
 .qr-block{
@@ -824,7 +827,7 @@ select:focus,input:focus{border-color:var(--g-1);box-shadow:0 0 0 3px rgba(212,1
           </div>
         </details>
 
-        <p class="howto-note">
+        <p class="howto-note" id="howto-note">
           送信いただくと、あなたのタイプに合わせた<br>
           詳しいお話が届きます。
         </p>
@@ -1372,6 +1375,7 @@ function setupKeywordGate(btn, r, keyword){
   $('howto-step1').textContent = '下のボタンを押すと、LINEが開きます';
   $('howto-step2').hidden = false;
   $('howto-step3').hidden = false;
+  $('howto-note').innerHTML = '送信いただくと、あなたのタイプに合わせた<br>詳しいお話が届きます。';
   btn.href = 'https://line.me/R/oaMessage/'+encodeURIComponent(CONFIG.LINE_ID)+'/?'+encodeURIComponent(keyword);
   btn.target = '_blank';
   btn.setAttribute('aria-disabled','false');
@@ -1398,6 +1402,9 @@ function setupUidGate(btn, r, keyword){
   $('howto-step1').textContent = '下のボタンを押すと、LINEのトークに鑑定結果が届き、そのままLINEに戻ります';
   $('howto-step2').hidden = true;
   $('howto-step3').hidden = true;
+  $('howto-note').innerHTML =
+    'ボタンを押すと、あなたのタイプに合わせた<br>詳しいお話が届きます。' +
+    '<br><small>※ 同じタイプの結果は、1分以内にもう一度押しても再送されません。</small>';
 
   btn.removeAttribute('href');
   btn.removeAttribute('target');

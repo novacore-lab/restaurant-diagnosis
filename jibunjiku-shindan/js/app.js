@@ -70,7 +70,8 @@ const els = {
   seminarCardTitle:  document.getElementById("seminar-card-title"),
   seminarCardPoints: document.getElementById("seminar-card-points"),
   seminarCourseTags: document.getElementById("seminar-course-tags"),
-  seminarBanner:     document.getElementById("seminar-banner")
+  seminarBanner:     document.getElementById("seminar-banner"),
+  btnLine:           document.getElementById("btn-line")
 };
 
 const FOCUS_TARGET_ID = {
@@ -229,6 +230,8 @@ function init() {
   // セミナーバナー画像もLPへのリンクにする
   if (els.seminarBanner) els.seminarBanner.href = SEMINAR_INFO.url;
   if (els.btnSeminar) els.btnSeminar.firstChild.textContent = SEMINAR_INFO.buttonText + " ";
+  // 公式LINEに戻るボタン（LINE内ブラウザならトークに戻る／通常ブラウザならLINEアプリが開く）
+  if (els.btnLine && typeof LINE_INFO !== "undefined") els.btnLine.href = LINE_INFO.url;
   els.btnStart.addEventListener("click", () => {
     renderQuestion(0);
     showScreen("question");

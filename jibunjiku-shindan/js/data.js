@@ -155,3 +155,13 @@ const SEMINAR_INFO = {
   url: "https://blooming-coach.com/lp/preseminar8-2/",
   buttonText: "セミナーの詳細・お申込みはこちら"
 };
+
+
+// ============================================
+// 【公式LINE】← LINE IDを変えるときはここだけ
+// ============================================
+const LINE_INFO = {
+  id: "@013vsyhn",   // ブルーミング・コーチングスクール（かわとも/ライフデザインコーチ）
+  // トーク画面を開くURL（LINE公式のURLスキーム）
+  get url() { return "https://line.me/R/oaMessage/" + encodeURIComponent(this.id); }
+};

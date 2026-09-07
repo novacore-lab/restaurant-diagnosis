@@ -665,6 +665,25 @@ p, li, h1, h2, h3 {
   box-shadow: 0 3px 12px rgba(212,132,90,0.4);
 }
 
+.seminar-banner {
+  display: block;
+  margin: 4px -6px 18px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.seminar-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.seminar-card-catch {
+  font-size: 0.86rem;
+  color: var(--color-text-sub);
+  letter-spacing: 0.06em;
+  margin: -12px 0 18px;
+}
+
 .seminar-card-title {
   font-size: 1.3rem;
   font-weight: 700;

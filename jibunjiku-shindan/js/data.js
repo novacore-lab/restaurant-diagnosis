@@ -151,6 +151,7 @@ const RESULT_TYPES = {
 // 【セミナー情報】← URLここだけ変更
 // ============================================
 const SEMINAR_INFO = {
-  url: "#seminar",  // ← 実際のセミナーURLに変更してください
-  buttonText: "セミナーの詳細を見てみる"
+  // ブルーミングスタイル コーチング体験セミナー（公式LP）
+  url: "https://blooming-coach.com/lp/preseminar8-2/",
+  buttonText: "セミナーの詳細・お申込みはこちら"
 };

@@ -69,7 +69,8 @@ const els = {
   seminarLead:       document.getElementById("seminar-lead-text"),
   seminarCardTitle:  document.getElementById("seminar-card-title"),
   seminarCardPoints: document.getElementById("seminar-card-points"),
-  seminarCourseTags: document.getElementById("seminar-course-tags")
+  seminarCourseTags: document.getElementById("seminar-course-tags"),
+  seminarBanner:     document.getElementById("seminar-banner")
 };
 
 const FOCUS_TARGET_ID = {
@@ -161,7 +162,8 @@ function judgeType() {
 
 function renderSeminarCard(typeKey) {
   const content = SEMINAR_CONTENTS[typeKey];
-  els.seminarCardTitle.innerHTML = nl2br(content.title);
+  // セミナー名はHTML側で固定（体験セミナーの正式名称）。タイプ別の一言は seminarLead に出す
+  if (els.seminarCardTitle) els.seminarCardTitle.innerHTML = nl2br(content.title);
   els.seminarCardPoints.innerHTML = content.points.map(p => `<li>${p}<` + `/li>`).join("");
   els.seminarCourseTags.innerHTML = content.tags.map(t => `<span class="course-tag">${t}<` + `/span>`).join("");
 }
@@ -224,6 +226,9 @@ function resetDiagnosis() {
 
 function init() {
   els.qTotal.textContent = QUESTIONS.length;
+  // セミナーバナー画像もLPへのリンクにする
+  if (els.seminarBanner) els.seminarBanner.href = SEMINAR_INFO.url;
+  if (els.btnSeminar) els.btnSeminar.firstChild.textContent = SEMINAR_INFO.buttonText + " ";
   els.btnStart.addEventListener("click", () => {
     renderQuestion(0);
     showScreen("question");

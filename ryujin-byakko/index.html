@@ -1395,7 +1395,7 @@ function setupUidGate(btn, r, keyword){
   $('qr-block').hidden = true;      // LINE から来た方なので QR は不要
   $('manual').hidden = false;       // 念のため手入力の道は残す
   $('gate-actions').classList.remove('is-desktop');
-  $('howto-step1').textContent = '下のボタンを押すと、LINEのトークに鑑定結果が届きます';
+  $('howto-step1').textContent = '下のボタンを押すと、LINEのトークに鑑定結果が届き、そのままLINEに戻ります';
   $('howto-step2').hidden = true;
   $('howto-step3').hidden = true;
 
@@ -1418,11 +1418,24 @@ function setupUidGate(btn, r, keyword){
       busy = false;
       if(ok){
         done = true;
+        // 届いたことを一瞬見せてから、LINE のトーク画面へ戻す
+        // （LINE 内ブラウザならそのままトークに戻る。通常ブラウザなら LINE アプリが開く）
+        const talkUrl = 'https://line.me/R/oaMessage/' + encodeURIComponent(CONFIG.LINE_ID);
         btn.textContent = 'LINEにお届けしました';
-        btn.setAttribute('aria-disabled','true');
         btn.classList.add('is-done');
-        note.textContent = 'LINEを開いて、トークをご確認ください';
-        $('howto-step1').textContent = 'LINEのトークに鑑定結果をお届けしました。この画面を閉じてご確認ください';
+        note.textContent = 'LINEのトークに戻ります…';
+        $('howto-step1').textContent = 'LINEのトークに鑑定結果をお届けしました';
+        setTimeout(function(){
+          // 自動で戻れなかったときのために、ボタン自体を「LINEを開く」リンクにしておく
+          btn.classList.remove('is-done');
+          btn.href = talkUrl;
+          btn.removeAttribute('target');
+          btn.setAttribute('aria-disabled','false');
+          btn.textContent = 'LINEを開いて結果を見る';
+          btn.onclick = null;
+          note.textContent = '自動で戻らないときは、このボタンを押してください';
+          try{ location.href = talkUrl; }catch(e){}
+        }, 1200);
       }else{
         // 届けられなかった → 従来のキーワード送信に切り替える
         setupKeywordGate(btn, r, keyword);

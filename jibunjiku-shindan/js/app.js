@@ -4,35 +4,41 @@
  */
 
 const SEMINAR_CONTENTS = {
-  a: {
-    title: "コーチとして活動する第一歩を一緒に踏み出しましょう",
-    points: [
-      "アドラー心理学ベースのコーチングとは何かを体験できる",
-      "プロコーチ・講師になるまでのロードマップが見える",
-      "「人を支える仕事」を具体的にイメージできるようになる",
-      "ライフデザインコーチ養成プログラムの内容が詳しくわかる"
+  "a": {
+    "points": [
+      "コーチングとアドラー心理学の概要がわかる",
+      "気づきを促す質問と、勇気づけのコミュニケーションを学べる",
+      "スクールの特徴や学び方がわかる",
+      "質疑応答で気になることを確認できる"
     ],
-    tags: ["プロコーチ・講師志望の方向け", "ブルーミング・コーチングスクールの案内あり"]
+    "tags": [
+      "参加無料",
+      "オンライン（Zoom）・約60分"
+    ]
   },
-  b: {
-    title: "現場で使える対話力を今日から変えていきましょう",
-    points: [
-      "部下・メンバーの本音を引き出す「問いかけ」の技術がわかる",
-      "1on1・面談・コンサルの質が根本から変わるアプローチを体験",
-      "アドラー心理学ベースの「相手の主体性を引き出す関わり方」を学べる",
-      "ブルーミング・コーチングスクールの案内あり"
+  "b": {
+    "points": [
+      "コーチングとアドラー心理学の概要がわかる",
+      "気づきを促す質問と、勇気づけのコミュニケーションを学べる",
+      "スクールの特徴や学び方がわかる",
+      "質疑応答で気になることを確認できる"
     ],
-    tags: ["管理職・コンサル・支援職の方向け", "ブルーミング・コーチングスクールの案内あり"]
+    "tags": [
+      "参加無料",
+      "オンライン（Zoom）・約60分"
+    ]
   },
-  c: {
-    title: "あなただけのライフデザインを一緒に描きましょう",
-    points: [
-      "自分の価値観・強みを言語化するプロセスを体験できる",
-      "「本当にやりたいこと」の見つけ方が具体的にわかる",
-      "自分の軸が見えると、副業・転職・起業の判断が変わる",
-      "コーチングを受けながら学ぶライフデザインコーチ養成プログラムも紹介"
+  "c": {
+    "points": [
+      "コーチングとアドラー心理学の概要がわかる",
+      "気づきを促す質問と、勇気づけのコミュニケーションを学べる",
+      "スクールの特徴や学び方がわかる",
+      "質疑応答で気になることを確認できる"
     ],
-    tags: ["自分の生き方・働き方を整えたい方向け", "ライフデザインコーチ養成プログラムの案内あり"]
+    "tags": [
+      "参加無料",
+      "オンライン（Zoom）・約60分"
+    ]
   }
 };
 
@@ -67,7 +73,6 @@ const els = {
   resultNeed:        document.getElementById("result-need-text"),
   resultPush:        document.getElementById("result-push-text"),
   seminarLead:       document.getElementById("seminar-lead-text"),
-  seminarCardTitle:  document.getElementById("seminar-card-title"),
   seminarCardPoints: document.getElementById("seminar-card-points"),
   seminarCourseTags: document.getElementById("seminar-course-tags"),
   seminarBanner:     document.getElementById("seminar-banner"),
@@ -163,8 +168,7 @@ function judgeType() {
 
 function renderSeminarCard(typeKey) {
   const content = SEMINAR_CONTENTS[typeKey];
-  // セミナー名はHTML側で固定（体験セミナーの正式名称）。タイプ別の一言は seminarLead に出す
-  if (els.seminarCardTitle) els.seminarCardTitle.innerHTML = nl2br(content.title);
+  // 講座名はHTML側で固定。タイプ別の案内は seminarLead に表示する
   els.seminarCardPoints.innerHTML = content.points.map(p => `<li>${p}<` + `/li>`).join("");
   els.seminarCourseTags.innerHTML = content.tags.map(t => `<span class="course-tag">${t}<` + `/span>`).join("");
 }

@@ -22,6 +22,28 @@ body{background:#f7f5f1} .top{border-bottom:1px solid #ece7df}.brand-mark{letter
 @media(max-width:360px){.rate-cells strong{font-size:18px}.preview-foot{display:block}.preview-foot span{display:block;margin-top:5px}.hero-tags span{font-size:8px}.hero h1{font-size:24px}}
 @media print{body{background:#fff}.card.result{background:#fff;border:0}.result .saving{box-shadow:none}.comparison-label{display:none}#personal-report{background:#fff;border:1px solid #ccc;padding:12px}.track,.bar{print-color-adjust:exact}}
 .hero-photo{margin:22px 0 0;max-width:420px}.hero-photo img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #efd6b9}.hero-photo figcaption{font-size:8px;color:#765d46;text-align:right;margin-top:4px}.hero-copy{align-items:center}.hero-photo img{box-shadow:0 5px 15px #7f4d1510}@media(max-width:600px){.hero-photo{margin-top:18px}.hero-photo img{border-radius:9px}.hero-copy{gap:20px}.hero h1{margin:15px 0}}
+
+/* Clear, tactile entry buttons; diagnosis behavior stays in the existing handlers. */
+.mode{border:2px solid #dc8b4b;background:linear-gradient(145deg,#fffdf8,#fff2e3);padding:23px;border-radius:14px;box-shadow:0 4px 0 #dfb38f,0 7px 15px #7d441313;transition:background .15s,border-color .15s,box-shadow .15s,transform .15s}
+.mode-foot{border:0;background:#b34b08;color:#fff;border-radius:8px;padding:11px 14px;margin-top:20px;font-size:13px;min-height:44px}
+.mode-foot span:last-child{font-size:20px;line-height:1}
+.mode:hover{border-color:#b34b08;background:#fff0db;box-shadow:0 6px 0 #d39b6e,0 10px 20px #7d441322;transform:translateY(-2px)}
+.mode:active{transform:translateY(3px);box-shadow:0 1px 0 #d39b6e}
+.mode:focus-visible{outline:3px solid #843700;outline-offset:5px}
+.mode-state{display:none;font-size:10px;font-weight:750;line-height:1.5;margin-top:4px}
+.has-selection .mode,.has-selection .mode[aria-pressed=true]{padding:13px 17px;min-height:78px;box-shadow:0 3px 0 #dfb38f}
+.has-selection .mode[aria-pressed=true]{background:#b34b08;border-color:#893904;color:#fff;box-shadow:0 3px 0 #793305}
+.has-selection .mode[aria-pressed=true] .mode-name small,.has-selection .mode[aria-pressed=true] .mode-description{color:#fff1df}
+.has-selection .mode[aria-pressed=true] .mode-state{display:block;color:#fff}
+.has-selection .mode:active{box-shadow:none}
+@media(max-width:600px){
+.mode,.mode[aria-pressed=true]{display:block;padding:18px 18px 17px 73px;min-height:148px}
+.mode-description{min-height:0}.mode-foot{margin:13px 0 0;padding:9px 12px;min-height:42px}
+.mode-foot span:first-child{display:inline}.mode-icon{top:22px}
+.has-selection .mode,.has-selection .mode[aria-pressed=true]{min-height:70px;padding:12px 6px;display:block}
+.has-selection .mode-name{font-size:12px}.has-selection .mode-state{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.mode{transition:none}.mode:hover,.mode:active{transform:none}}
 </style>
 <!-- Icons: Lucide 0.542.0, ISC license. Copyright (c) Lucide Contributors. Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies. THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. -->
 </head>
@@ -66,7 +88,7 @@ body{background:#f7f5f1} .top{border-bottom:1px solid #ece7df}.brand-mark{letter
   <path d="M12 18h.01" />
 </svg>
 </div><h2>あまり使わない月も、<br>たっぷり使う月も。</h2><div class="rate-cells"><div><span>3GBまで</span><strong>1,078<small>円</small></strong></div><div><span>20GBまで</span><strong>2,178<small>円</small></strong></div><div class="rate-unlimited"><span>20GB超・無制限</span><strong>3,278<small>円</small></strong></div></div><p>Rakuten最強プランの通常月額・税込。通話料等別。<br>家族割・年齢特典は条件を確認して診断に反映。</p><div class="preview-foot">利用量に合わせた3段階<span>混雑時等に速度制御の場合あり</span></div></aside></div>
-<div class="selection-heading"><h2>ご利用区分を選択してください</h2><p>区分に合った料金プランで試算します</p></div>
+<div class="selection-heading"><h2>ご利用区分を選択してください</h2><p>下のボタンを押して診断を始めます</p></div>
 <div class="modes" role="group" aria-label="ご利用区分">
 <button class="mode" id="mode-personal" aria-pressed="false" type="button"><span class="mode-icon"><!-- @license lucide-static v0.542.0 - ISC -->
 <svg aria-hidden="true" focusable="false"
@@ -84,7 +106,7 @@ body{background:#f7f5f1} .top{border-bottom:1px solid #ece7df}.brand-mark{letter
   <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
   <path d="M12 18h.01" />
 </svg>
-</span><span class="mode-index">PERSONAL / 01</span><span class="mode-name">個人 <small>（会社員など）</small></span><span class="mode-description">ご自身・ご家族の携帯料金を比較<br>楽天モバイルで試算</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
+</span><span class="mode-index">PERSONAL / 01</span><span class="mode-name">個人 <small>（会社員など）</small></span><span class="mode-state">選択中</span><span class="mode-description">ご自身・ご家族の携帯料金を比較<br>楽天モバイルで試算</span><span class="mode-foot"><span>この区分で診断を始める</span><span aria-hidden="true">→</span></span></button>
 <button class="mode" id="mode-business" aria-pressed="false" type="button"><span class="mode-icon"><!-- @license lucide-static v0.542.0 - ISC -->
 <svg aria-hidden="true" focusable="false"
   class="lucide lucide-building-2"
@@ -106,7 +128,7 @@ body{background:#f7f5f1} .top{border-bottom:1px solid #ece7df}.brand-mark{letter
   <path d="M10 14h4" />
   <path d="M10 18h4" />
 </svg>
-</span><span class="mode-index">BUSINESS / 02</span><span class="mode-name">法人</span><span class="mode-description">会社・従業員の通信コストを比較<br>ソフトバンク法人向け料金で試算</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
+</span><span class="mode-index">BUSINESS / 02</span><span class="mode-name">法人</span><span class="mode-state">選択中</span><span class="mode-description">会社・従業員の通信コストを比較<br>ソフトバンク法人向け料金で試算</span><span class="mode-foot"><span>この区分で診断を始める</span><span aria-hidden="true">→</span></span></button>
 <button class="mode" id="mode-sole" aria-pressed="false" type="button"><span class="mode-icon"><!-- @license lucide-static v0.542.0 - ISC -->
 <svg aria-hidden="true" focusable="false"
   class="lucide lucide-briefcase-business"
@@ -125,7 +147,7 @@ body{background:#f7f5f1} .top{border-bottom:1px solid #ece7df}.brand-mark{letter
   <path d="M22 13a18.15 18.15 0 0 1-20 0" />
   <rect width="20" height="14" x="2" y="6" rx="2" />
 </svg>
-</span><span class="mode-index">SOLE PROPRIETOR / 03</span><span class="mode-name">個人事業主</span><span class="mode-description">事業用の携帯料金を比較<br>法人向けプランの相談対象</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
+</span><span class="mode-index">SOLE PROPRIETOR / 03</span><span class="mode-name">個人事業主</span><span class="mode-state">選択中</span><span class="mode-description">事業用の携帯料金を比較<br>法人向けプランの相談対象</span><span class="mode-foot"><span>この区分で診断を始める</span><span aria-hidden="true">→</span></span></button>
 </div><details class="selection-help"><summary>区分の選び方・契約名義について</summary><p>ご自身に当てはまる区分を選択してください。雇用形態から現在の回線名義を推定することはありません。法人向けプランの申込可否は、実際の契約名義・事業確認書類などで確認します。</p></details>
 <div class="prep"><div class="prep-title"><!-- @license lucide-static v0.542.0 - ISC -->
 <svg aria-hidden="true" focusable="false"

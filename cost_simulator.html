@@ -12,32 +12,155 @@
 @media(max-width:600px){.shell{padding:0 20px}.top .shell{min-height:68px}.brand{font-size:12px;gap:11px}.brand-mark{font-size:11px;padding-right:11px}.top .small{display:none}.progress{gap:18px;margin-top:22px;font-size:10px}.progress b{width:23px;height:23px}.hero{padding:27px 0 20px}.hero h1{font-size:29px;line-height:1.5}.hero h1 br{display:block}.intro{font-size:13px;line-height:1.85}.hero-tags{margin-top:12px}.hero-tags span{font-size:10px}.selection-heading{margin:28px 0 13px}.selection-heading h2{font-size:15px}.selection-heading p{display:none}.modes{grid-template-columns:1fr;gap:10px}.mode,.mode[aria-pressed=true]{padding:17px 19px;display:grid;grid-template-columns:1fr auto}.mode[aria-pressed=true]{padding:16px 18px}.mode-index{display:none}.mode-name{font-size:17px}.mode-description{grid-column:1;margin-top:3px;font-size:11px;min-height:0}.mode-foot{grid-column:2;grid-row:1 / 3;align-self:center;border:0;margin:0;padding:0 0 0 14px}.mode-foot span:first-child{display:none}.mode-foot span:last-child{font-size:20px}.selection-help{font-size:11px}.selection-help p{font-size:11px}.prep{display:block;margin-top:22px;padding:18px 0 0}.prep-title{font-size:11px;margin-bottom:6px}.prep p{font-size:11px}.card{padding:22px 20px}.section-divider{margin-inline:-20px}.layout{margin-top:8px;gap:16px}.grid{grid-template-columns:1fr 1fr;gap:12px}.field label{font-size:12px}.field input,.field select{font-size:14px;padding:11px 10px}.field .hint{font-size:10px}.check{font-size:12px;padding:12px}.check small{font-size:11px}.note{font-size:11px}.has-selection .modes{grid-template-columns:repeat(3,1fr);gap:7px}.has-selection .mode{display:block;padding:13px 8px;text-align:center}.has-selection .mode[aria-pressed=true]{padding:12px 7px}.has-selection .mode-name{font-size:12px;white-space:nowrap}.has-selection .mode-name small{display:none}.has-selection .hero{padding:20px 0 12px}.has-selection .selection-heading h2{font-size:12px}.has-selection .selection-help{margin-top:9px}.summary strong{font-size:19px}.summary>div{padding:12px}.saving{padding:20px}.amount{font-size:42px}.breakdown>div{font-size:11px;gap:8px}.sources details{padding:15px}.sources>h2{font-size:14px}.sources summary{font-size:12px}.docs{grid-template-columns:1fr}.footer{display:block;font-size:10px;margin:0 20px;padding:20px 0}.footer span{display:block}.footer span+span{margin-top:5px}}
 @media(max-width:360px){.grid{grid-template-columns:1fr}.brand{font-size:11px}.progress{gap:10px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-@media print{body{background:#fff}.hero,.top,.input-card,.actions,.modes,.cta,.sources,.footer,.progress{display:none}.layout{display:block}.card{border:0;box-shadow:none}.shell{max-width:100%;padding:0}.result{break-inside:avoid}.result::before{content:'スマホ料金削減シミュレーター｜概算結果';display:block;font-weight:700;margin-bottom:20px}.saving{print-color-adjust:exact}}
+@media print{body{background:#fff}.hero,.top,.input-card,.actions,.modes,.cta,.sources,.footer,.progress{display:none}.layout{display:block}.card{border:0;box-shadow:none}.shell{max-width:100%;padding:0}.result{break-inside:auto}.breakdown>div,.saving,.summary{break-inside:avoid}#personal-report h3{break-after:avoid}#personal-report a{color:#20252c}.result::before{content:'スマホ料金削減シミュレーター｜概算結果';display:block;font-weight:700;margin-bottom:20px}.saving{print-color-adjust:exact}}
+
+/* Visual refinement: keep the established orange palette and diagnostic flow. */
+body{background:#f7f5f1} .top{border-bottom:1px solid #ece7df}.brand-mark{letter-spacing:.12em}.progress{gap:12px}.progress li{padding:7px 12px;border-radius:24px}.progress .current{background:#fff1e4}.progress .current b{background:#b94d08;color:#fff}.hero{padding-top:26px}.hero-copy{padding:36px;border:1px solid #f1d7bc;border-radius:22px;background:linear-gradient(115deg,#fff7e9 0%,#fff3e5 48%,#f6dfc3 100%);grid-template-columns:1.12fr 1fr;gap:36px;align-items:center;box-shadow:0 12px 36px #784b1510}.hero-kicker{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:750;color:#8c3e0c}.hero-kicker svg{width:20px;height:20px}.hero h1{font-size:clamp(28px,3.1vw,40px);margin:18px 0;line-height:1.45}.intro{font-size:13px;color:#675744}.hero-tags span{background:#fff9f1;border-color:#ead8c4;color:#695a49;border-radius:20px;padding:4px 10px;font-size:10px}.rate-preview{background:#292b2c;color:#fff;border-radius:16px;padding:24px;box-shadow:0 12px 26px #30251819}.preview-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#ebc5a4;letter-spacing:.04em}.preview-head svg{width:23px;height:23px;color:#ffb976}.rate-preview h2{font-size:19px;line-height:1.6;margin:14px 0 22px;font-weight:700}.rate-cells{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.rate-cells>div{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:9px;padding:12px 7px;text-align:center}.rate-cells span{display:block;font-size:9px;color:#e8ded5;white-space:nowrap}.rate-cells strong{display:block;font-size:21px;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:6px}.rate-cells strong small{font-size:10px;font-weight:500;letter-spacing:0;margin-left:2px}.rate-cells .rate-unlimited{background:#ffb976;color:#402207;border-color:#ffb976}.rate-unlimited span{color:#583312}.rate-preview p{font-size:9px;line-height:1.8;color:#d0ccc6;margin:13px 0 0}.preview-foot{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #ffffff26;padding-top:12px;margin-top:16px;font-size:10px;color:#ffbd83}.preview-foot span{font-size:8px;color:#d0ccc6}.selection-heading{margin:28px 0 15px}.mode{overflow:hidden;border-color:#e7e0d7;border-radius:14px;padding:24px;box-shadow:0 5px 14px #49301607}.mode-index{margin-bottom:14px;font-size:9px;color:#817568}.mode-icon{position:absolute;right:22px;top:22px;display:flex;justify-content:center;align-items:center;width:43px;height:43px;border-radius:12px;background:#fff0de;color:#a64a0b}.mode-icon svg{width:23px;height:23px}.mode:hover .mode-icon{background:#f9ddbf}.mode-name{font-size:22px}.mode-foot{margin-top:20px}.prep{background:#eee9e1;border:0;border-radius:12px;padding:18px 22px;margin-top:20px;gap:25px}.prep-title{display:flex;align-items:center;gap:10px;color:#5e4c36}.prep-title svg{width:21px;height:21px;color:#a05a20}.prep p{font-size:11px}.card{border-color:#e9e2d9;box-shadow:0 5px 20px #49301606;border-radius:16px}.step{display:flex;align-items:center;gap:8px;color:#9a4a16}.step-number{display:inline-flex;width:23px;height:23px;justify-content:center;align-items:center;border-radius:7px;background:#fff0e1;color:#91420d;font-size:10px}.result{background:linear-gradient(150deg,#fff9f0 0%,#fff 40%);border-top:4px solid #d56613}.saving{background:#292b2c;border:0;border-radius:13px;box-shadow:0 6px 18px #24222214}.summary>div{border-radius:10px}.summary>div:last-child{background:#fff0dc;border-color:#f4d4aa}.comparison-label{font-size:11px;font-weight:650;color:#74614d;margin:25px 0 12px}.track{height:13px;background:#eeeae5;border-radius:4px}.bar{background:#91999c}.bar.after{background:linear-gradient(90deg,#d56818,#f1a050)}.breakdown>div{padding:12px 0}#personal-report{margin-top:24px;padding:18px;border:1px solid #eadfce;background:#fffdf8;border-radius:12px}#personal-report h3{font-size:14px;margin:0 0 10px}#personal-report .breakdown{margin-top:12px}.check{background:#faf8f4;border-color:#e9e4dc}.check:has(input:checked){background:#fff2df;border-color:#ebc395}.primary{background:#b34b08;border-color:#b34b08;box-shadow:0 4px 10px #b34b081c}.section-divider{background:#e9e3da}.sources details{border-color:#e8e1d7;background:#fffdfa}.has-selection .hero{padding:22px 0 18px}.has-selection .mode-icon{display:none}.has-selection .mode{box-shadow:none}.has-selection .selection-heading{margin-bottom:13px}.footer{border-color:#e5ddd1}
+@media(max-width:1000px){.hero-copy{padding:28px;gap:22px}.rate-preview{padding:20px}.rate-cells strong{font-size:18px}.mode-name{font-size:19px}.mode-icon{width:36px;height:36px;right:18px;top:20px}}
+@media(max-width:800px){.hero-copy{grid-template-columns:1fr;gap:26px}.hero-message{max-width:100%}.hero h1 br{display:none}.rate-preview h2 br{display:none}.rate-cells strong{font-size:24px}.rate-preview{padding:24px}.rate-cells span{font-size:11px}.preview-foot span{font-size:9px}}
+@media(max-width:600px){.progress{gap:3px;font-size:9px}.progress li{padding:5px 6px;gap:5px}.progress b{width:21px;height:21px}.hero-copy{padding:24px 20px;border-radius:17px;gap:22px}.hero h1{font-size:27px;letter-spacing:-.055em}.hero h1 br{display:block}.hero-kicker{font-size:11px}.hero-tags{gap:4px}.hero-tags span{font-size:9px;padding:3px 7px}.rate-preview{padding:19px;border-radius:12px}.rate-preview h2{font-size:16px;margin:12px 0 17px}.rate-preview h2 br{display:block}.rate-cells span{font-size:9px}.rate-cells strong{font-size:22px}.rate-cells>div{padding:10px 5px}.preview-foot{font-size:9px}.preview-foot span{font-size:8px}.selection-heading{margin-top:24px}.mode,.mode[aria-pressed=true]{padding:18px 18px 18px 73px;min-height:94px}.mode[aria-pressed=true]{padding:17px 17px 17px 72px}.mode-icon{top:24px;left:17px;right:auto;width:39px;height:39px}.mode-name{font-size:17px}.mode-foot{padding-left:10px}.prep{padding:16px 18px}.prep-title{font-size:11px;margin-bottom:8px}.has-selection .mode,.has-selection .mode[aria-pressed=true]{min-height:0;padding:13px 8px}.has-selection .mode[aria-pressed=true]{padding:12px 7px}#personal-report{padding:14px}.amount{font-size:38px}.comparison-label{margin-top:22px}}
+@media(max-width:360px){.rate-cells strong{font-size:18px}.preview-foot{display:block}.preview-foot span{display:block;margin-top:5px}.hero-tags span{font-size:8px}.hero h1{font-size:24px}}
+@media print{body{background:#fff}.card.result{background:#fff;border:0}.result .saving{box-shadow:none}.comparison-label{display:none}#personal-report{background:#fff;border:1px solid #ccc;padding:12px}.track,.bar{print-color-adjust:exact}}
+.hero-photo{margin:22px 0 0;max-width:420px}.hero-photo img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #efd6b9}.hero-photo figcaption{font-size:8px;color:#765d46;text-align:right;margin-top:4px}.hero-copy{align-items:center}.hero-photo img{box-shadow:0 5px 15px #7f4d1510}@media(max-width:600px){.hero-photo{margin-top:18px}.hero-photo img{border-radius:9px}.hero-copy{gap:20px}.hero h1{margin:15px 0}}
 </style>
+<!-- Icons: Lucide 0.542.0, ISC license. Copyright (c) Lucide Contributors. Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies. THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. -->
 </head>
 <body>
 <header class="top"><div class="shell"><div class="brand"><span class="brand-mark">MOBILE<br>COST</span><span>スマホ料金削減シミュレーター</span></div><div class="small">個人・法人の通信コストを、わかりやすく。</div></div></header>
 <main class="shell">
 <ol class="progress" aria-label="診断の流れ"><li id="progress-select" class="current"><b>01</b> 区分の選択</li><li id="progress-input"><b>02</b> 条件の入力</li><li id="progress-result"><b>03</b> 比較結果</li></ol>
-<section class="hero"><div class="hero-copy"><div><div class="eyebrow">MOBILE COST REVIEW</div><h1>スマホ料金を、<br><em>納得できるコストへ。</em></h1></div><div><p class="intro">毎月の通信料金と、見直し後のプランを比較。<br>ご利用状況に合わせて、月々・年間の差額を<br class="desktop-br">シンプルに確認できます。</p><div class="hero-tags"><span>登録不要</span><span>税込で比較</span><span>入力情報の送信なし</span></div></div></div>
+<section class="hero"><div class="hero-copy"><div class="hero-message"><div class="hero-kicker"><!-- @license lucide-static v0.542.0 - ISC -->
+<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chart-no-axes-combined"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 16v5" />
+  <path d="M16 14v7" />
+  <path d="M20 10v11" />
+  <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" />
+  <path d="M4 18v3" />
+  <path d="M8 14v7" />
+</svg>
+<span>毎月の固定費を、すっきり。</span></div><h1>スマホ料金を、<br><em>納得できるコストへ。</em></h1><p class="intro">使うギガも、電話のかけ方も。<br>あなたの条件で、月々・年間の差額を見える化。</p><div class="hero-tags"><span>登録不要</span><span>税込で比較</span><span>入力情報の送信なし</span></div><figure class="hero-photo"><img src="mobile-assets/smartphone-hero.webp" alt="温かい光の中に置かれた汎用スマートフォンのイメージ" width="1100" height="458" fetchpriority="high"><figcaption>スマートフォンのイメージ（AI生成）</figcaption></figure></div><aside class="rate-preview" aria-label="個人向け楽天料金の目安"><div class="preview-head"><span>個人向けの料金目安</span><!-- @license lucide-static v0.542.0 - ISC -->
+<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-smartphone"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+  <path d="M12 18h.01" />
+</svg>
+</div><h2>あまり使わない月も、<br>たっぷり使う月も。</h2><div class="rate-cells"><div><span>3GBまで</span><strong>1,078<small>円</small></strong></div><div><span>20GBまで</span><strong>2,178<small>円</small></strong></div><div class="rate-unlimited"><span>20GB超・無制限</span><strong>3,278<small>円</small></strong></div></div><p>Rakuten最強プランの通常月額・税込。通話料等別。<br>家族割・年齢特典は条件を確認して診断に反映。</p><div class="preview-foot">利用量に合わせた3段階<span>混雑時等に速度制御の場合あり</span></div></aside></div>
 <div class="selection-heading"><h2>ご利用区分を選択してください</h2><p>区分に合った料金プランで試算します</p></div>
 <div class="modes" role="group" aria-label="ご利用区分">
-<button class="mode" id="mode-personal" aria-pressed="false" type="button"><span class="mode-index">PERSONAL / 01</span><span class="mode-name">個人 <small>（会社員など）</small></span><span class="mode-description">ご自身・ご家族の携帯料金を比較<br>楽天モバイルで試算</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
-<button class="mode" id="mode-business" aria-pressed="false" type="button"><span class="mode-index">BUSINESS / 02</span><span class="mode-name">法人</span><span class="mode-description">会社・従業員の通信コストを比較<br>ソフトバンク法人向け料金で試算</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
-<button class="mode" id="mode-sole" aria-pressed="false" type="button"><span class="mode-index">SOLE PROPRIETOR / 03</span><span class="mode-name">個人事業主</span><span class="mode-description">事業用の携帯料金を比較<br>法人向けプランの相談対象</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
+<button class="mode" id="mode-personal" aria-pressed="false" type="button"><span class="mode-icon"><!-- @license lucide-static v0.542.0 - ISC -->
+<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-smartphone"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+  <path d="M12 18h.01" />
+</svg>
+</span><span class="mode-index">PERSONAL / 01</span><span class="mode-name">個人 <small>（会社員など）</small></span><span class="mode-description">ご自身・ご家族の携帯料金を比較<br>楽天モバイルで試算</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
+<button class="mode" id="mode-business" aria-pressed="false" type="button"><span class="mode-icon"><!-- @license lucide-static v0.542.0 - ISC -->
+<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-building-2"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+  <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+  <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+  <path d="M10 6h4" />
+  <path d="M10 10h4" />
+  <path d="M10 14h4" />
+  <path d="M10 18h4" />
+</svg>
+</span><span class="mode-index">BUSINESS / 02</span><span class="mode-name">法人</span><span class="mode-description">会社・従業員の通信コストを比較<br>ソフトバンク法人向け料金で試算</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
+<button class="mode" id="mode-sole" aria-pressed="false" type="button"><span class="mode-icon"><!-- @license lucide-static v0.542.0 - ISC -->
+<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-briefcase-business"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 12h.01" />
+  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+  <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+  <rect width="20" height="14" x="2" y="6" rx="2" />
+</svg>
+</span><span class="mode-index">SOLE PROPRIETOR / 03</span><span class="mode-name">個人事業主</span><span class="mode-description">事業用の携帯料金を比較<br>法人向けプランの相談対象</span><span class="mode-foot"><span>この区分で診断</span><span aria-hidden="true">→</span></span></button>
 </div><details class="selection-help"><summary>区分の選び方・契約名義について</summary><p>ご自身に当てはまる区分を選択してください。雇用形態から現在の回線名義を推定することはありません。法人向けプランの申込可否は、実際の契約名義・事業確認書類などで確認します。</p></details>
-<div class="prep"><div class="prep-title">診断に必要なもの</div><p>現在の月額通信料金・回線数・データ利用量をご用意ください。<br>端末代・分割代金を除いた通信料金で比較します。</p></div></section>
+<div class="prep"><div class="prep-title"><!-- @license lucide-static v0.542.0 - ISC -->
+<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-shield-check"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg>
+<span>準備はこれだけ</span></div><p>現在の月額通信料金・回線数・データ利用量をご用意ください。<br>端末代・分割代金を除いた通信料金で比較します。</p></div></section>
 <div class="layout" id="simulator" hidden>
-<section class="card input-card"><div class="step">CURRENT PLAN</div><h2>現在のご利用状況</h2>
+<section class="card input-card"><div class="step"><span class="step-number">01</span> CURRENT PLAN</div><h2>現在のご利用状況</h2>
 <form id="sim-form" novalidate>
 <div class="grid"><div class="field"><label for="line-count">比較する回線数</label><input id="line-count" type="number" min="1" max="10000" step="1" value="1" required inputmode="numeric"><p class="hint">全回線を同じ料金・条件で計算します。</p></div><div class="field"><label for="current-cost">現在の通信料金（円／月）</label><input id="current-cost" type="number" min="0" max="100000000" step="0.01" placeholder="例：6,000" required inputmode="decimal"><p class="hint">端末代・分割代金を除いて入力。</p></div></div>
 <div class="grid"><div class="field"><label for="cost-scope">入力料金の対象</label><select id="cost-scope"><option value="per">1回線あたり</option><option value="total">全回線の合計</option></select></div><div class="field"><label for="input-tax">現在料金の税区分</label><select id="input-tax"><option value="included">税込</option><option value="excluded">税抜</option></select></div></div>
-<div class="section-divider"></div><div class="step">NEW PLAN</div><h2>見直し後の条件</h2>
-<fieldset id="personal-fields"><legend class="small">個人向け：Rakuten最強プラン</legend><div class="field"><label for="data-gb">月間データ利用量（GB／回線）</label><input id="data-gb" type="number" min="0" max="100000" step="0.01" value="20" inputmode="decimal" required></div>
-<label class="check"><input type="checkbox" id="family"><span>最強家族割の適用条件を満たす回線として計算する<br><small>家族グループへの参加等が必要。各回線110円／月（税込）引き。条件未確認の場合は外してください。</small></span></label>
-<div class="field"><label for="call-mode">国内通話の使い方</label><select id="call-mode"><option value="link">Rakuten Linkの対象通話を利用</option><option value="manual">標準電話アプリ・有料オプション等を利用</option></select></div>
-<div id="call-extra-wrap" class="field" hidden><label for="call-extra">見直し後の通話料・通話オプション代（税込円／月・回線）</label><input id="call-extra" type="number" min="0" max="1000000" step="0.01" inputmode="decimal" placeholder="公式条件から見積もった金額"><p class="hint">標準アプリは30秒22円。通話ごとに課金単位の端数が生じます。有料オプション利用時は、その月額と超過分を入力してください。</p></div>
-<p class="hint">Rakuten Linkは一部対象外番号・国際通話等に別途料金がかかります。該当する場合は上の「標準電話アプリ・有料オプション等」を選び、その料金を含めてください。</p>
+<div class="section-divider"></div><div class="step"><span class="step-number">02</span> NEW PLAN</div><h2>見直し後の条件</h2>
+<fieldset id="personal-fields"><legend class="small">個人向け：Rakuten最強プラン（音声通話付き）</legend>
+<div class="field"><label for="data-tier">1回線あたりの月間データ利用量</label><select id="data-tier"><option value="small">3GBまで｜通常1,078円</option><option value="medium" selected>3GB超〜20GBまで｜通常2,178円</option><option value="unlimited">20GB超（無制限）｜通常3,278円</option></select><p class="hint">税込。月の実際の使用量で料金段階が変わります。無制限も混雑時等に速度制御する場合があります。</p></div>
+<label class="check"><input type="checkbox" id="family"><span>最強家族割の対象グループに参加する条件を確認済み<small>月110円引き。対象プランでグループ作成・参加の手続きが必要です。家族であるだけでは適用しません。</small></span></label>
+<div class="field"><label for="age">契約者本人の年齢区分</label><select id="age"><option value="unknown">未確認（年齢特典なし）</option><option value="child">12歳以下</option><option value="teen">13〜17歳</option><option value="youth">18〜22歳</option><option value="adult">23〜64歳</option><option value="senior">65歳以上</option></select><p class="hint">利用者の年齢だけでは割引を判定しません。年齢特典は契約者ごとの制限があるため1回線ずつ診断。年齢特典なしの複数回線は同じ条件で計算します。親名義でも利用者が18歳未満なら必要なフィルタリング月550円を「その他通信費」に入力してください。</p></div>
+<label class="check" id="age-confirm-wrap" hidden><input type="checkbox" id="age-confirm"><span>年齢特典の申込・適用条件を確認済み<small>こども割：3GBまで440円引き、超過後110円引き。青春割：110円引き。いずれも申込が必要、家族割と併用可。シニア：本人の楽天IDでエントリー等の条件を満たす場合、毎月110ポイント（料金からは差し引きません）。</small></span></label>
+<div id="filter-wrap" hidden><label class="check"><input type="checkbox" id="filter-waiver"><span>保護者によるフィルタリング不要申出の条件を確認済み<small>18歳未満は原則、有料フィルタリング「あんしんコントロール」月550円を加算。不要申出を確認した場合のみ外します。初回無料・一時ポイントは月額差額に含めません。</small></span></label></div>
+<div id="senior-pack-wrap" hidden><p class="hint">65歳以上向けの「15分かけ放題＆安心パック」は月1,980円の請求と、条件達成時の最大880ポイント還元を別々に確認してください。利用する場合は15分かけ放題を選び、パックの残り880円を「その他通信費」に入力（重複加算に注意）。パックのポイントはこの診断の差額に含めません。<a href="https://network.mobile.rakuten.co.jp/fee/senior/" target="_blank" rel="noopener">公式条件</a></p></div><div class="field"><label for="call-mode">国内通話の使い方</label><select id="call-mode"><option value="link">Rakuten Link｜対象国内通話0円</option><option value="standard">標準電話アプリ｜30秒22円</option><option value="fifteen">15分（標準）通話かけ放題｜月1,100円</option></select></div>
+<div id="call-minutes-wrap" class="field" hidden><label for="call-units" id="call-units-label">標準通話の課金単位数（30秒／月・回線）</label><input id="call-units" type="number" min="0" max="1000000" step="1" value="0" inputmode="numeric"><p class="hint">各通話を30秒単位で切り上げた合計を入力（10分×3回＝60単位、1分10秒×3回＝9単位）。15分かけ放題は各通話の15分超過分だけを合計。未確認なら0のまま確定せず、請求・通話履歴で確認してください。</p></div>
+<div class="field"><label for="call-extra">対象外通話などの追加見込額（税込円／月・回線）</label><input id="call-extra" type="number" min="0" max="1000000" step="0.01" value="0" inputmode="decimal"><p class="hint">0570・0180・一部特番（188）等はLink無料対象外。15分かけ放題も一部番号対象外。国際通話・有料SMS等は公式料金で確認し入力。0円は対象外通話が無料という意味ではありません。</p></div>
+<label class="check"><input type="checkbox" id="voicemail"><span>留守番電話を付ける｜月330円（税込）<small>留守番電話の再生等に別途通話料が発生する場合があります。</small></span></label>
+<p class="hint">Rakuten Linkは対応端末・OSとアプリの利用が必要です。通常の電話アプリからの発信を無料として扱いません。その他の有料オプションは下の追加費用に入力してください。</p>
 </fieldset>
 <fieldset id="business-fields" hidden disabled><legend class="small" id="business-legend">法人向け：提供資料のSoftBank料金で比較</legend><details class="inline-conditions"><summary>契約名義・必要書類について</summary><p class="note" id="identity-note">法人契約の名義・必要書類・申込可否をご確認ください。</p></details>
 <div class="field"><label for="carrier">現在の携帯会社</label><select id="carrier"><option value="other">ソフトバンク以外から乗り換え</option><option value="softbank">ソフトバンクを利用中</option><option value="unknown">未確認・新規契約</option></select></div>
@@ -47,15 +170,15 @@
 <p class="hint">資料記載：基本プラン専用3年／4年契約、国内通話定額込み（対象外通話あり）。契約期間・解約時の条件・割引の詳細は見積もりで確認してください。</p></details>
 </fieldset>
 <details class="inline-conditions"><summary>追加費用を含めて比較する</summary><div class="field"><label for="monthly-extra">見直し後のその他通信費（税込円／月・回線）</label><input id="monthly-extra" type="number" min="0" max="1000000" step="0.01" value="0" inputmode="decimal"><p class="hint">SMS・有料オプションなど。端末代は含めません。</p></div><div class="field"><label for="initial-cost">切り替え時の費用（税込円・全回線合計）</label><input id="initial-cost" type="number" min="0" max="100000000" step="0.01" value="0" inputmode="decimal"><p class="hint">契約事務手数料・解約料・固定回線の初期費用など、確認できた総額を入力。0円は無料の保証ではありません。楽天モバイルは同一名義で累計5回線目以降、1回線3,850円の契約事務手数料が必要です。</p></div></details>
-<details class="inline-conditions"><summary>比較に含まれる費用・含まれない費用</summary><p class="notice">比較範囲は通信料金です。現在料金も、端末代・ユニバーサルサービス料・電話リレーサービス料を除き、同じ範囲で入力してください。年齢別割引・ポイント還元・期間限定特典は計算に含みません。</p></details>
+<details class="inline-conditions"><summary>比較に含まれる費用・含まれない費用</summary><p class="notice">比較範囲は通信料金です。現在料金も、端末代・ユニバーサルサービス料・電話リレーサービス料を除き、同じ範囲で入力してください。個人の年齢別割引は条件確認時のみ反映。ポイント還元・期間限定特典は削減額から除外します。</p></details>
 <p id="error" class="error" role="alert" hidden></p><button type="submit" class="primary">料金を比較する →</button><div class="actions"><button type="button" class="secondary" id="demo">入力例を見る</button><button type="button" class="secondary" id="reset-button">リセット</button></div>
 </form></section>
-<section class="card result" id="results" tabindex="-1" aria-labelledby="result-title"><div class="step">COST COMPARISON</div><div class="result-head"><h2 id="result-title">料金の比較結果</h2><span class="badge">すべて税込</span></div><div id="empty" class="empty"><h3>今の料金と、見直し後を<br>ひと目で比較。</h3><p>ご利用状況を入力し、<br>「料金を比較する」を押してください。</p><div class="empty-preview" aria-hidden="true"><div><span>現在の月額</span><strong>— 円</strong></div><div><span>見直し後の月額</span><strong>— 円</strong></div></div><div class="empty-foot">月額・年間・24カ月の差額を表示します。<br>端末費用は試算に含めません。</div></div>
-<div id="result-content" hidden><div id="stale" class="stale" hidden>入力条件が変わりました。もう一度「料金を比較する」を押してください。</div><p id="result-plan" class="small"></p><p id="result-status" role="status"></p><div id="saving-box" class="saving"><p id="delta-label">月々の差額</p><div class="amount"><span id="delta">—</span><small> 円／月</small></div><p id="delta-caption"></p></div><div class="summary"><div><span>現在の月額合計</span><strong id="current-total">—</strong></div><div><span>見直し後の月額合計</span><strong id="after-total">—</strong></div></div><div aria-hidden="true"><div class="bar-row"><span>現在</span><div class="track"><div id="current-bar" class="bar"></div></div></div><div class="bar-row"><span>見直し後</span><div class="track"><div id="after-bar" class="bar after"></div></div></div></div><dl class="breakdown"><div><dt>1回線のプラン料金（税込）</dt><dd id="unit-price">—</dd></div><div><dt>追加通信費（税込・全回線）</dt><dd id="extras-total">—</dd></div><div><dt>月額差額 × 12カ月</dt><dd id="annual">—</dd></div><div><dt>切り替え時の費用</dt><dd id="initial">—</dd></div><div><dt>初年度の差額（初期費用反映）</dt><dd id="first-year">—</dd></div><div><dt>24カ月の差額（初期費用反映）</dt><dd id="two-years">—</dd></div></dl><p class="small" id="calc-assumptions"></p><p class="small">マイナスの差額は負担増です。毎月同じ利用量・料金が続く仮定で、実際の請求額や削減額を保証するものではありません。消費税10%、円未満四捨五入による概算です。</p><div class="actions"><button type="button" class="secondary" id="print">結果を印刷</button></div>
+<section class="card result" id="results" tabindex="-1" aria-labelledby="result-title"><div class="step"><span class="step-number">03</span> COST COMPARISON</div><div class="result-head"><h2 id="result-title">料金の比較結果</h2><span class="badge">すべて税込</span></div><div id="empty" class="empty"><h3>今の料金と、見直し後を<br>ひと目で比較。</h3><p>ご利用状況を入力し、<br>「料金を比較する」を押してください。</p><div class="empty-preview" aria-hidden="true"><div><span>現在の月額</span><strong>— 円</strong></div><div><span>見直し後の月額</span><strong>— 円</strong></div></div><div class="empty-foot">月額・年間・24カ月の差額を表示します。<br>端末費用は試算に含めません。</div></div>
+<div id="result-content" hidden><div id="stale" class="stale" hidden>入力条件が変わりました。もう一度「料金を比較する」を押してください。</div><p id="result-plan" class="small"></p><p id="result-status" role="status"></p><div id="saving-box" class="saving"><p id="delta-label">月々の差額</p><div class="amount"><span id="delta">—</span><small> 円／月</small></div><p id="delta-caption"></p></div><div class="summary"><div><span>現在の月額合計</span><strong id="current-total">—</strong></div><div><span>見直し後の月額合計</span><strong id="after-total">—</strong></div></div><div aria-hidden="true"><div class="comparison-label">月額通信費の比較</div><div class="bar-row"><span>現在</span><div class="track"><div id="current-bar" class="bar"></div></div></div><div class="bar-row"><span>見直し後</span><div class="track"><div id="after-bar" class="bar after"></div></div></div></div><dl class="breakdown"><div><dt>1回線のプラン料金（税込）</dt><dd id="unit-price">—</dd></div><div><dt>追加通信費（税込・全回線）</dt><dd id="extras-total">—</dd></div><div><dt>月額差額 × 12カ月</dt><dd id="annual">—</dd></div><div><dt>切り替え時の費用</dt><dd id="initial">—</dd></div><div><dt>初年度の差額（初期費用反映）</dt><dd id="first-year">—</dd></div><div><dt>24カ月の差額（初期費用反映）</dt><dd id="two-years">—</dd></div></dl><div id="personal-report" hidden><h3>診断票｜条件と料金内訳</h3><dl class="breakdown" id="personal-breakdown"></dl><p class="small" id="personal-conditions"></p><p class="note" id="personal-points"></p><p class="small" id="personal-checklist"></p><p class="small">公式確認日：2026年10月10日 ／ <a href="https://network.mobile.rakuten.co.jp/fee/saikyo-plan/detail/">楽天公式料金</a>・<a href="https://network.mobile.rakuten.co.jp/fee/family/">家族割</a>・<a href="https://network.mobile.rakuten.co.jp/fee/kids/">こども割</a>・<a href="https://network.mobile.rakuten.co.jp/fee/youth/">青春割</a>・<a href="https://network.mobile.rakuten.co.jp/fee/senior/">シニア</a>・<a href="https://network.mobile.rakuten.co.jp/service/standard-free-call/">15分通話</a>・<a href="https://network.mobile.rakuten.co.jp/service/anshin-control/">フィルタリング</a>・<a href="https://network.mobile.rakuten.co.jp/service/voice-mail/">留守番電話</a></p></div><p class="small" id="calc-assumptions"></p><p class="small">マイナスの差額は負担増です。毎月同じ利用量・料金が続く仮定で、実際の請求額や削減額を保証するものではありません。消費税10%、円未満四捨五入による概算です。</p><div class="actions"><button type="button" class="secondary" id="print">結果を印刷</button></div>
 <div id="personal-cta" class="cta"><div class="eyebrow">NEXT STEP</div><h3>楽天モバイルの条件を確認する</h3><p class="small">通信エリア・対応端末・通話条件も確認してからご検討ください。</p><a id="affiliate-link" class="primary" hidden rel="sponsored noopener" target="_blank">楽天モバイルの広告ページへ</a><a href="https://network.mobile.rakuten.co.jp/fee/saikyo-plan/detail/" target="_blank" rel="noopener">楽天モバイル公式で料金・条件を確認 ↗</a><p class="small" id="ad-disclosure" hidden>広告（PR）：このリンクはA8.netのアフィリエイト広告です。</p></div>
 <div id="business-cta" class="cta" hidden><div class="eyebrow">BUSINESS SUPPORT</div><h3>法人向けのご案内</h3><p class="small" id="biz-price-note"></p><div class="note"><strong>iPhone 17e 月1円（1〜24回目）</strong><br><span id="campaign-status"></span><br>提供資料の端末キャンペーン案内です。<strong>返却条件・25回目以降の支払額・総額・月1円の税区分は要確認</strong>。端末費用は上の削減額に含めていません。</div><h3>UMIDASの導入サポート</h3><p class="small">提供資料では、契約確認・業者交渉・導入後の管理支援を案内しています。法人・個人事業主は事業確認書類が必要です。</p><ul class="list"><li>初期設定：無料（資料記載）</li><li>機器保証：月額550円／台、端末レンタル：月額700円／台（税区分・適用条件は要確認、試算対象外）</li><li>修理費用5%OFF、買取価格10%UP、従業員の個人通信費無料診断（資料記載・対象条件は要確認）</li></ul><p class="small">実績数値は提供元資料の記載であり、本サイトで独立に検証した実績ではありません。</p><a href="#business-documents" id="docs-link" class="primary">法人料金表・案内資料を見る ↓</a><p class="small">相談先は資料内のQRコードをご確認ください。入力した金額を自動送信することはありません。</p></div>
 </div></section></div>
-<section class="sources" id="sources" hidden><h2>料金の根拠と、確認しておきたいこと</h2><details id="personal-source"><summary>個人向け｜Rakuten最強プランの料金</summary><p class="small">公式情報確認日：2026年10月10日。音声通話付きプランの通常料金です。</p><div class="table-scroll"><table><thead><tr><th>毎月の利用量</th><th>通常（税込）</th><th>最強家族割適用（税込）</th></tr></thead><tbody><tr><td>3GBまで</td><td>1,078円</td><td>968円</td></tr><tr><td>3GB超〜20GBまで</td><td>2,178円</td><td>2,068円</td></tr><tr><td>20GB超</td><td>3,278円</td><td>3,168円</td></tr></tbody></table></div><p class="small">ギガ無制限は混雑時等に速度制御する場合があります。家族割は対象グループへの参加などが必要で、自動では適用されません。Rakuten Linkの対象国内通話は無料、標準電話アプリは30秒22円。一部番号は対象外です。</p><p class="small"><a href="https://network.mobile.rakuten.co.jp/fee/saikyo-plan/detail/" target="_blank" rel="noopener">公式料金表</a> ／ <a href="https://network.mobile.rakuten.co.jp/fee/family/" target="_blank" rel="noopener">最強家族割の条件</a> ／ <a href="https://network.mobile.rakuten.co.jp/service/rakuten-link/" target="_blank" rel="noopener">Rakuten Link</a></p></details>
+<section class="sources" id="sources" hidden><h2>料金の根拠と、確認しておきたいこと</h2><details id="personal-source"><summary>個人向け｜Rakuten最強プランの料金</summary><p class="small">公式情報確認日：2026年10月10日。音声通話付きプランの通常料金です。</p><div class="table-scroll"><table><thead><tr><th>毎月の利用量</th><th>通常（税込）</th><th>最強家族割適用（税込）</th></tr></thead><tbody><tr><td>3GBまで</td><td>1,078円</td><td>968円</td></tr><tr><td>3GB超〜20GBまで</td><td>2,178円</td><td>2,068円</td></tr><tr><td>20GB超（無制限）</td><td>3,278円</td><td>3,168円</td></tr></tbody></table></div><p class="small">ギガ無制限は混雑時等に速度制御する場合があります。家族割は対象グループへの参加などが必要で、自動では適用されません。Rakuten Linkの対象国内通話は無料、標準電話アプリは30秒22円。一部番号は対象外です。</p><p class="small"><a href="https://network.mobile.rakuten.co.jp/fee/saikyo-plan/detail/" target="_blank" rel="noopener">公式料金表</a> ／ <a href="https://network.mobile.rakuten.co.jp/fee/family/" target="_blank" rel="noopener">最強家族割の条件</a> ／ <a href="https://network.mobile.rakuten.co.jp/service/rakuten-link/" target="_blank" rel="noopener">Rakuten Link</a></p></details>
 <div id="business-source" hidden><details><summary>法人向け｜提供資料の料金表（すべて税抜／月・回線）</summary><div class="table-scroll"><table><thead><tr><th>スマートフォンプラン</th><th>1GB</th><th>5GB</th><th>20GB</th><th>50GB</th><th>無制限</th></tr></thead><tbody><tr><td>Bizパッケージ＋</td><td>2,480円</td><td>3,480円</td><td>3,980円</td><td>4,480円</td><td>5,480円</td></tr><tr><td>ライト</td><td>—</td><td>2,980円</td><td>3,480円</td><td>3,980円</td><td>4,980円</td></tr><tr><td>Sライト</td><td>—</td><td>2,480円</td><td>2,980円</td><td>3,480円</td><td>4,480円</td></tr><tr><td>Hライト</td><td>—</td><td>1,980円</td><td>2,480円</td><td>—</td><td>3,980円</td></tr><tr><td>おうち割（適用確認時）</td><td>—</td><td>−500円</td><td>−1,000円</td><td>−1,000円</td><td>−1,000円</td></tr></tbody></table></div><ul class="list"><li>各金額は資料のパッケージ適用後料金。基本プラン980円と通話定額オプション1,800円をさらに加算しません。</li><li>資料の従来型1GB・1,980円はスマートフォンプランと異なるため、このシミュレーターの選択対象外です。</li><li>基本プラン専用3年契約／4年契約。標準Bizパッケージ＋の4年契約はスマートフォンのみ。国内通話定額は音声端末が対象で、国際通話・0570等の対象外通話があります。</li><li>おうち割は対象固定回線等の条件確認が必要です。新たに固定回線・指定オプション等を契約する費用は別途加算してください。ライト各種の適用資格・併用可否は窓口で要確認です。</li><li>無制限プランは通信制御等の同意書が必要。時間帯による速度制御があり、月200GB超は最大4.5Mbpsで制御。テザリングは50GBまで（提供資料記載）。</li><li>端末代別途。掲載料金の現在の受付状況・提供期間・審査・在庫は見積もりでご確認ください。</li></ul></details>
 <details id="business-documents"><summary>法人向け案内資料を見る（提供画像6点）</summary><div class="note">以下は提供元の原資料です。<strong>乗り換え例には税込・税抜が混在した比較があるため、その削減額は本試算に使用していません。</strong>本ページ上部では税込に統一して再計算します。資料内の端末キャンペーン・実績・特典は提供元の記載であり、最新条件や実績を独立検証したものではありません。</div><div class="docs">
 <figure><a href="mobile-assets/umidas.jpg" target="_blank" rel="noopener"><img src="mobile-assets/umidas.jpg" alt="UMIDASの紹介・導入事例・無料相談と担当者LINEのQRコード" loading="lazy"></a><figcaption>UMIDASの紹介（実績は資料記載）</figcaption></figure>
@@ -80,14 +203,24 @@ function calculate(v) {
   if (!valid(v.current,0,100000000)) throw new Error('現在の通信料金を0以上の数値で入力してください。');
   if (!['per','total'].includes(v.scope) || !['included','excluded'].includes(v.tax)) throw new Error('料金の対象と税区分を選択してください。');
   if (!valid(v.extra,0,1000000) || !valid(v.initial,0,100000000)) throw new Error('追加費用を0以上の数値で入力してください。');
-  let net, call = 0, discount = 0, label;
+  let net, call = 0, discount = 0, label, base = 0, ageDiscount = 0, options = 0, points = 0;
   if (v.mode === 'personal') {
-    if (!valid(v.gb,0,100000)) throw new Error('月間データ利用量を0以上の数値で入力してください。');
-    net = v.gb <= 3 ? 980 : v.gb <= 20 ? 1980 : 2980;
+    const tiers = {small:980,medium:1980,unlimited:2980};
+    if (!(v.tier in tiers)) throw new Error('データ利用量の段階を選択してください。');
+    if (!['unknown','child','teen','youth','adult','senior'].includes(v.age)) throw new Error('年齢区分を選択してください。');
+    if (v.ageConfirmed && v.count !== 1) throw new Error('年齢特典は契約者ごとの回線制限があります。1回線ずつ診断してください。');
+    base = tiers[v.tier]; net = base;
     if (v.family) { net -= 100; discount = 100; }
-    if (v.callMode === 'manual') { if (!valid(v.call,0,1000000)) throw new Error('見直し後の通話料・通話オプション代を入力してください。'); call = v.call; }
-    else if (v.callMode !== 'link') throw new Error('通話の使い方を選択してください。');
-    label = 'Rakuten最強プラン｜' + (v.gb <= 3 ? '3GBまで' : v.gb <= 20 ? '3GB超〜20GBまで' : '20GB超') + (v.family ? '・最強家族割適用' : '・通常料金');
+    if (v.ageConfirmed && v.age === 'child') ageDiscount = v.tier === 'small' ? 400 : 100;
+    if (v.ageConfirmed && ['teen','youth'].includes(v.age)) ageDiscount = 100;
+    net -= ageDiscount;
+    if (v.ageConfirmed && v.age === 'senior') points = 110;
+    options = (['child','teen'].includes(v.age) && !v.filterWaiver ? 550 : 0) + (v.voicemail ? 330 : 0);
+    if (!valid(v.call,0,1000000)) throw new Error('対象外通話などの追加見込額を0以上で入力してください。');
+    if (!['link','standard','fifteen'].includes(v.callMode)) throw new Error('通話の使い方を選択してください。');
+    if (v.callMode !== 'link' && (!valid(v.callUnits,0,1000000) || !Number.isInteger(v.callUnits))) throw new Error('通話の課金単位数は0以上の整数で入力してください。');
+    call = v.call + (v.callMode === 'fifteen' ? 1100 : 0) + (v.callMode === 'link' ? 0 : v.callUnits * 22);
+    label = 'Rakuten最強プラン｜' + ({small:'3GBまで',medium:'3GB超〜20GBまで',unlimited:'20GB超（無制限）'}[v.tier]) + (v.family ? '・最強家族割適用' : '・家族割なし') + (ageDiscount ? '・年齢割引適用' : '');
   } else if (v.mode === 'business') {
     net = BIZ[v.plan]?.[v.data];
     if (net === undefined) throw new Error('このプランに指定の容量はありません。選び直してください。');
@@ -96,10 +229,10 @@ function calculate(v) {
   } else throw new Error('個人または法人を選択してください。');
   const unit = roundMoney(net * 1.1);
   const current = Math.round(v.current * (v.scope === 'per' ? v.count : 1) * (v.tax === 'excluded' ? 1.1 : 1));
-  const extras = Math.round((call + v.extra) * v.count);
-  const after = Math.round((unit + call + v.extra) * v.count);
+  const extras = Math.round((call + options + v.extra) * v.count);
+  const after = Math.round((unit + call + options + v.extra) * v.count);
   const delta = current - after, initial = Math.round(v.initial);
-  return {unit,net,discount,current,extras,after,delta,annual:delta*12,firstYear:delta*12-initial,twoYears:delta*24-initial,initial,label};
+  return {base,ageDiscount,options,points,call,unit,net,discount,current,extras,after,delta,annual:delta*12,firstYear:delta*12-initial,twoYears:delta*24-initial,initial,label};
 }
 const $ = id => document.getElementById(id);
 let mode = null;
@@ -107,7 +240,7 @@ let identity = null;
 const fmt = n => n.toLocaleString('ja-JP');
 const yen = n => fmt(n) + '円';
 function number(id) { const x = $(id).value.trim(); return x === '' ? NaN : Number(x); }
-function values() {return {mode,count:number('line-count'),current:number('current-cost'),scope:$('cost-scope').value,tax:$('input-tax').value,extra:number('monthly-extra'),initial:number('initial-cost'),gb:number('data-gb'),family:$('family').checked,callMode:$('call-mode').value,call:number('call-extra'),plan:$('biz-plan').value,data:$('biz-data').value,ouchi:$('ouchi').checked};}
+function values() {return {mode,count:number('line-count'),current:number('current-cost'),scope:$('cost-scope').value,tax:$('input-tax').value,extra:number('monthly-extra'),initial:number('initial-cost'),tier:$('data-tier').value,age:$('age').value,ageConfirmed:$('age-confirm').checked,filterWaiver:$('filter-waiver').checked,voicemail:$('voicemail').checked,callUnits:number('call-units'),family:$('family').checked,callMode:$('call-mode').value,call:number('call-extra'),plan:$('biz-plan').value,data:$('biz-data').value,ouchi:$('ouchi').checked};}
 function setProgress(stage){for(const n of ['select','input','result']){$('progress-'+n).classList.toggle('current',n===stage);if(n===stage)$('progress-'+n).setAttribute('aria-current','step');else $('progress-'+n).removeAttribute('aria-current');}}
 function clearResult() {setProgress(mode?'input':'select');$('result-content').hidden=true;$('empty').hidden=false;$('stale').hidden=true;$('error').hidden=true;}
 function markStale() {setProgress('input');if (!$('result-content').hidden) {$('stale').hidden=false;$('print').disabled=true;}}
@@ -125,6 +258,16 @@ function render(v,r) {setProgress('result');
   for(const [id,key] of Object.entries({'current-total':'current','after-total':'after','unit-price':'unit','extras-total':'extras','annual':'annual','initial':'initial','first-year':'firstYear','two-years':'twoYears'}))$(id).textContent=yen(r[key]);
   const maximum=Math.max(r.current,r.after,1);$('current-bar').style.width=r.current/maximum*100+'%';$('after-bar').style.width=r.after/maximum*100+'%';
   $('calc-assumptions').textContent='現在料金：'+(v.scope==='per'?'1回線あたり':'全回線合計')+'・'+(v.tax==='included'?'税込入力':'税抜入力を税込に換算')+'。初期費用は'+yen(r.initial)+'として計算。';
+  $('personal-report').hidden=v.mode!=='personal';
+  if(v.mode==='personal') {
+    const rows=[['通常のプラン料金（1回線）',yen(roundMoney(r.base*1.1))],['家族割（1回線）',r.discount?'−'+yen(roundMoney(r.discount*1.1)):'適用なし'],['年齢割引（1回線）',r.ageDiscount?'−'+yen(roundMoney(r.ageDiscount*1.1)):'適用なし'],['通話オプション・従量・対象外（1回線）',yen(r.call)],['フィルタリング・留守番電話（1回線）',yen(r.options)],['その他通信費（1回線）',yen(v.extra)]];
+    $('personal-breakdown').replaceChildren(...rows.map(([title,value])=>{const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=title;dd.textContent=value;row.append(dt,dd);return row;}));
+    const ages={unknown:'年齢未確認',child:'契約者12歳以下',teen:'契約者13〜17歳',youth:'契約者18〜22歳',adult:'契約者23〜64歳',senior:'契約者65歳以上'};
+    const calls={link:'Rakuten Linkの対象国内通話0円',standard:'標準電話アプリ・30秒22円',fifteen:'15分（標準）通話かけ放題・月1,100円、超過は30秒22円'};
+    $('personal-conditions').textContent=ages[v.age]+'／年齢特典：'+(v.ageConfirmed?'条件確認済みとして試算':'未適用')+'。通話：'+calls[v.callMode]+(v.callMode==='link'?'':'、課金単位数'+v.callUnits)+'。対象外等の追加見込額：'+yen(v.call)+'／回線。留守番電話：'+(v.voicemail?'あり':'なし')+'。'+(['child','teen'].includes(v.age)?'フィルタリング：'+(v.filterWaiver?'保護者の不要申出確認済みとして除外':'月550円加算')+'。':'');
+    $('personal-points').textContent=r.points?'シニアの毎月110ポイントは後日還元（期間限定ポイント）。月額請求・年間・24カ月の削減額からは差し引いていません。複数回線でも110ポイントを回線数倍していません。':'ポイント還元・紹介特典・初月無料などは月額・年間・24カ月の差額に含めていません。';
+    $('personal-checklist').textContent='契約前の確認：家族割は対象グループへの参加手続き、年齢割引は本人名義・申込が必要。こども割は13歳の誕生月前月まで、青春割は23歳の誕生月前月まで。年齢条件が変わる月以降の年間・24カ月差額は再計算してください。Linkと15分かけ放題はいずれも対象外番号あり（0570等）。有料SMS・国際通話・必要オプション・通信エリア・対応端末・契約事務手数料も確認。追加費用が未確認の場合、この診断は確定見積もりではありません。';
+  }
   $('personal-cta').hidden=v.mode!=='personal';$('business-cta').hidden=v.mode!=='business';
   if(v.mode==='business') {$('biz-price-note').textContent='選択プランの通信料金：'+yen(r.net)+'（税抜）／'+yen(r.unit)+'（税込）・1回線。国内通話定額込み（対象外あり）。';const carrier=$('carrier').value;$('campaign-status').textContent=carrier==='softbank'?'ソフトバンク利用中のため、今回の乗り換えキャンペーンの対象外です。':carrier==='unknown'?'今回の案内はソフトバンク以外からの乗り換えが対象です。現在の携帯会社・適用可否をご確認ください。':'ソフトバンク以外からの乗り換えが対象との案内です。適用審査・在庫・提供期間などは窓口で確認してください。';}
 }
@@ -133,12 +276,21 @@ $('sim-form').addEventListener('submit',submit);
 for(const n of ['personal','business','sole'])$('mode-'+n).addEventListener('click',()=>setMode(n));
 $('sim-form').addEventListener('input',markStale);$('sim-form').addEventListener('change',markStale);
 $('biz-plan').addEventListener('change',syncData);$('biz-data').addEventListener('change',syncOuchi);
-$('call-mode').addEventListener('change',()=>{$('call-extra-wrap').hidden=$('call-mode').value!=='manual';});
-$('reset-button').addEventListener('click',()=>{$('sim-form').reset();syncData();$('call-extra-wrap').hidden=true;clearResult();});
-$('demo').addEventListener('click',()=>{$('sim-form').reset();$('line-count').value=mode==='business'?5:1;$('current-cost').value=6000;syncData();$('biz-data').value='20';syncOuchi();$('call-extra-wrap').hidden=true;submit();});
+function syncPersonal() {
+  const age=$('age').value;
+  $('age-confirm-wrap').hidden=!['child','teen','youth','senior'].includes(age);
+  $('filter-wrap').hidden=!['child','teen'].includes(age);
+  $('senior-pack-wrap').hidden=age!=='senior';
+  $('call-minutes-wrap').hidden=$('call-mode').value==='link';
+  $('call-units-label').textContent=$('call-mode').value==='fifteen'?'各通話の15分超過分の課金単位数（30秒／月・回線）':'標準通話の課金単位数（30秒／月・回線）';
+}
+$('call-mode').addEventListener('change',syncPersonal);
+$('age').addEventListener('change',()=>{$('age-confirm').checked=false;$('filter-waiver').checked=false;syncPersonal();});
+$('reset-button').addEventListener('click',()=>{$('sim-form').reset();syncData();syncPersonal();clearResult();});
+$('demo').addEventListener('click',()=>{$('sim-form').reset();$('line-count').value=mode==='business'?5:1;$('current-cost').value=6000;syncData();$('biz-data').value='20';syncOuchi();syncPersonal();submit();});
 $('print').addEventListener('click',()=>window.print());
 $('docs-link').addEventListener('click',()=>{$('business-documents').open=true;});
 if(CONFIG.rakutenAffiliateUrl){try{const url=new URL(CONFIG.rakutenAffiliateUrl);if(url.protocol==='https:'&&(url.hostname==='a8.net'||url.hostname.endsWith('.a8.net'))){$('affiliate-link').href=url.href;$('affiliate-link').hidden=false;$('ad-disclosure').hidden=false;$('ad-disclosure').textContent='広告（PR）：このリンクはA8.netのアフィリエイト広告です。';}}catch{ /* 未設定扱いを維持 */ }}
-syncData();
+syncData();syncPersonal();
 </script>
 </body></html>
